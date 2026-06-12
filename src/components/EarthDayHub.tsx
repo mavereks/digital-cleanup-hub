@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Leaf, Cloud, HardDrive, Calculator, Repeat, Calendar, Mail, FolderOpen, Users, GraduationCap, Video, PlayCircle, Check, ExternalLink, AlertCircle, TrendingDown, Lightbulb, Copy, ArrowRight } from 'lucide-react';
+import { Cloud, HardDrive, Calculator, Repeat, Calendar, Mail, FolderOpen, Users, GraduationCap, Video, PlayCircle, Check, ExternalLink, AlertCircle, TrendingDown, Lightbulb, Copy, ArrowRight } from 'lucide-react';
 
 export default function EarthDayHub() {
   const [activeSection, setActiveSection] = useState('why');
@@ -44,17 +44,15 @@ export default function EarthDayHub() {
       <header className="border-b border-stone-200 bg-white sticky top-0 z-10">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-emerald-600 flex items-center justify-center">
-              <Leaf className="w-5 h-5 text-white" strokeWidth={2.5} />
-            </div>
+            <img src={`${import.meta.env.BASE_URL}sustainability-shield.png`} alt="Sustainable St. Thomas shield" className="h-12 w-auto" />
             <div>
-              <h1 className="font-semibold text-stone-900 leading-tight">Digital Cleanup Hub</h1>
+              <h1 className="font-semibold text-plum-700 leading-tight">Digital Cleanup Hub</h1>
               <p className="text-xs text-stone-500">Cloud storage cleanup for Higher Ed</p>
             </div>
           </div>
           <div className="hidden md:flex items-center gap-2 text-xs text-stone-500">
-            <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-            Higher Ed Enterprise Apps
+            <div className="w-2 h-2 rounded-full bg-leaf"></div>
+            ITS Sustainability · Office of Sustainability Initiatives
           </div>
         </div>
       </header>
@@ -72,11 +70,11 @@ export default function EarthDayHub() {
                   onClick={() => setActiveSection(s.id)}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-sm transition-all ${
                     active
-                      ? 'bg-emerald-50 text-emerald-900 font-medium'
+                      ? 'bg-plum-50 text-plum-900 font-medium'
                       : 'text-stone-600 hover:bg-stone-100'
                   }`}
                 >
-                  <span className={`text-xs w-5 ${active ? 'text-emerald-600' : 'text-stone-400'}`}>0{i + 1}</span>
+                  <span className={`text-xs w-5 ${active ? 'text-plum-600' : 'text-stone-400'}`}>0{i + 1}</span>
                   <Icon className="w-4 h-4" />
                   <span>{s.label}</span>
                 </button>
@@ -96,7 +94,7 @@ export default function EarthDayHub() {
                   key={s.id}
                   onClick={() => setActiveSection(s.id)}
                   className={`flex-shrink-0 flex flex-col items-center gap-1 px-4 py-3 text-xs ${
-                    active ? 'text-emerald-600' : 'text-stone-500'
+                    active ? 'text-plum-600' : 'text-stone-500'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -113,8 +111,13 @@ export default function EarthDayHub() {
           {/* SECTION 1: WHY */}
           {activeSection === 'why' && (
             <div className="space-y-8">
+              <div className="bg-plum-50 border border-plum-200 p-5 rounded-xl">
+                <p className="text-sm text-plum-700 leading-relaxed">
+                  <span className="font-semibold">Host your own Digital Cleanup event.</span> This hub grew out of an Earth Day workshop hosted by the ITS Sustainability Team and the Office of Sustainability Initiatives (OSI) at the University of St. Thomas. In one hour, participants learned to understand their digital carbon footprint, cleaned up their biggest "digital landfills," and adopted habits to avoid creating more digital waste. Everything you need to run the same event — facts, per-platform guides, calculators, and templates — is here.
+                </p>
+              </div>
               <div>
-                <p className="text-xs uppercase tracking-wider text-emerald-600 font-medium mb-2">Part 01</p>
+                <p className="text-xs uppercase tracking-wider text-plum-600 font-medium mb-2">Part 01</p>
                 <h2 className="text-3xl font-semibold text-stone-900 mb-3">Why cloud storage has a carbon cost</h2>
                 <p className="text-stone-600 leading-relaxed">The core facts attendees need to trust the premise — grounded in current research from IEA, iMasons, and peer-reviewed studies.</p>
               </div>
@@ -132,9 +135,9 @@ export default function EarthDayHub() {
                   <div className="text-2xl font-semibold text-stone-900">~2×</div>
                   <div className="text-xs text-stone-500 mt-1">Projected growth in data center energy by 2026</div>
                 </div>
-                <div className="bg-emerald-600 text-white p-5 rounded-lg">
+                <div className="bg-plum-600 text-white p-5 rounded-lg">
                   <div className="text-2xl font-semibold">&gt;50%</div>
-                  <div className="text-xs text-emerald-50 mt-1">Of stored data is never used again ("dark data")</div>
+                  <div className="text-xs text-plum-50 mt-1">Of stored data is never used again ("dark data")</div>
                 </div>
               </div>
 
@@ -179,22 +182,22 @@ export default function EarthDayHub() {
                           <div className="text-sm font-medium text-stone-900">{r.a}</div>
                           {r.sub && <div className="text-xs text-stone-500 mt-0.5">{r.sub}</div>}
                         </div>
-                        <div className="text-sm font-mono text-emerald-700 flex-shrink-0 text-right">{r.b}</div>
+                        <div className="text-sm font-mono text-plum-700 flex-shrink-0 text-right">{r.b}</div>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 text-white p-6 rounded-xl">
+              <div className="bg-gradient-to-br from-plum-600 to-plum-700 text-white p-6 rounded-xl">
                 <div className="flex items-start gap-4">
                   <TrendingDown className="w-6 h-6 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-lg mb-2">The "dark data" problem</h3>
-                    <p className="text-emerald-50 text-sm leading-relaxed mb-3">
+                    <p className="text-plum-50 text-sm leading-relaxed mb-3">
                       More than half of data collected by typical organizations is collected, processed, and never used again. Globally, dark data generates an estimated <span className="font-semibold text-white">5.8 million tonnes of CO₂ per year — roughly 1.2 million cars.</span>
                     </p>
-                    <p className="text-emerald-100 text-sm leading-relaxed">
+                    <p className="text-plum-100 text-sm leading-relaxed">
                       This is your single most powerful workshop framing: most of what we store we never touch again, but it keeps drawing power 24/7 and driving demand for new hardware. Deleting it costs nothing and actually makes digital life better.
                     </p>
                   </div>
@@ -207,7 +210,7 @@ export default function EarthDayHub() {
           {activeSection === 'cleanup' && (
             <div className="space-y-6">
               <div>
-                <p className="text-xs uppercase tracking-wider text-emerald-600 font-medium mb-2">Part 02</p>
+                <p className="text-xs uppercase tracking-wider text-plum-600 font-medium mb-2">Part 02</p>
                 <h2 className="text-3xl font-semibold text-stone-900 mb-3">Per-platform cleanup guides</h2>
                 <p className="text-stone-600 leading-relaxed">Teachable workflows for each platform. Each includes what counts toward storage, the gotchas users trip over, and step-by-step instructions.</p>
               </div>
@@ -383,14 +386,14 @@ export default function EarthDayHub() {
           {activeSection === 'tools' && (
             <div className="space-y-8">
               <div>
-                <p className="text-xs uppercase tracking-wider text-emerald-600 font-medium mb-2">Part 03</p>
+                <p className="text-xs uppercase tracking-wider text-plum-600 font-medium mb-2">Part 03</p>
                 <h2 className="text-3xl font-semibold text-stone-900 mb-3">Tools to estimate impact</h2>
                 <p className="text-stone-600 leading-relaxed">No single perfect calculator exists for higher-ed cloud footprints. Use a mix of tools plus back-of-envelope formulas.</p>
               </div>
 
               <div className="bg-white p-6 rounded-xl border border-stone-200">
                 <div className="flex items-center gap-2 mb-1">
-                  <Calculator className="w-5 h-5 text-emerald-600" />
+                  <Calculator className="w-5 h-5 text-plum-600" />
                   <h3 className="text-lg font-semibold">Quick workshop calculator</h3>
                 </div>
                 <p className="text-sm text-stone-500 mb-6">Rule-of-thumb estimates. Good for live demos — present as ranges, not precision.</p>
@@ -412,7 +415,7 @@ export default function EarthDayHub() {
                         max={s.max}
                         value={s.value}
                         onChange={(e) => s.setter(parseInt(e.target.value))}
-                        className="w-full accent-emerald-600"
+                        className="w-full accent-plum-600"
                       />
                       <div className="text-xs text-stone-500 mt-1">{s.note}</div>
                     </div>
@@ -421,7 +424,7 @@ export default function EarthDayHub() {
                   <div className="pt-5 border-t border-stone-100 flex items-center justify-between">
                     <div>
                       <div className="text-xs text-stone-500 uppercase tracking-wide">Total estimated footprint</div>
-                      <div className="text-3xl font-semibold text-emerald-700 mt-1">{totalCO2} <span className="text-lg text-stone-500 font-normal">kg CO₂e / year</span></div>
+                      <div className="text-3xl font-semibold text-plum-700 mt-1">{totalCO2} <span className="text-lg text-stone-500 font-normal">kg CO₂e / year</span></div>
                     </div>
                     <div className="text-right text-xs text-stone-500">
                       ≈ {(parseFloat(totalCO2) / 4.6).toFixed(0)} miles<br/>
@@ -434,7 +437,7 @@ export default function EarthDayHub() {
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
                   <h3 className="font-semibold text-stone-900 mb-3 flex items-center gap-2">
-                    <Users className="w-4 h-4 text-emerald-600" />
+                    <Users className="w-4 h-4 text-plum-600" />
                     For individual end users
                   </h3>
                   <div className="space-y-2">
@@ -446,7 +449,7 @@ export default function EarthDayHub() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-stone-900 mb-3 flex items-center gap-2">
-                    <HardDrive className="w-4 h-4 text-emerald-600" />
+                    <HardDrive className="w-4 h-4 text-plum-600" />
                     For administrators
                   </h3>
                   <div className="space-y-2">
@@ -473,7 +476,7 @@ export default function EarthDayHub() {
                     { label: 'PHOTOS ', note: 'Avg smartphone photo ≈ 3–4 MB. Typical user has', highlight: '25 GB of redundant cloud photos ≈ 50–100 kg CO₂e/year.' },
                   ].map((f, i, arr) => (
                     <div key={f.label} className={`flex items-start gap-3 pb-4 ${i < arr.length - 1 ? 'border-b border-stone-800' : ''}`}>
-                      <span className="text-emerald-400 flex-shrink-0">{f.label}</span>
+                      <span className="text-plum-400 flex-shrink-0">{f.label}</span>
                       <span className="text-stone-300">{f.note} <span className="text-white">{f.highlight}</span></span>
                     </div>
                   ))}
@@ -486,14 +489,14 @@ export default function EarthDayHub() {
           {activeSection === 'behavior' && (
             <div className="space-y-8">
               <div>
-                <p className="text-xs uppercase tracking-wider text-emerald-600 font-medium mb-2">Part 04</p>
+                <p className="text-xs uppercase tracking-wider text-plum-600 font-medium mb-2">Part 04</p>
                 <h2 className="text-3xl font-semibold text-stone-900 mb-3">Behaviors that make cleanup stick</h2>
                 <p className="text-stone-600 leading-relaxed">Cleanup events create a one-time deletion spike. Habits create ongoing reduction. Build the workshop around both.</p>
               </div>
 
               <div>
                 <h3 className="font-semibold text-stone-900 mb-3 flex items-center gap-2">
-                  <Users className="w-4 h-4 text-emerald-600" />
+                  <Users className="w-4 h-4 text-plum-600" />
                   Daily hygiene — for individual users
                 </h3>
                 <div className="grid md:grid-cols-2 gap-3">
@@ -511,7 +514,7 @@ export default function EarthDayHub() {
                   ].map((h, i) => (
                     <div key={i} className="bg-white p-4 rounded-lg border border-stone-200">
                       <div className="flex items-start gap-3">
-                        <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-leaf flex-shrink-0 mt-0.5" />
                         <div>
                           <div className="font-medium text-sm text-stone-900">{h.t}</div>
                           <div className="text-xs text-stone-500 mt-1 leading-relaxed">{h.d}</div>
@@ -565,13 +568,13 @@ export default function EarthDayHub() {
                 return (
                   <div key={section.heading}>
                     <h3 className="font-semibold text-stone-900 mb-3 flex items-center gap-2">
-                      <Icon className="w-4 h-4 text-emerald-600" />
+                      <Icon className="w-4 h-4 text-plum-600" />
                       {section.heading}
                     </h3>
                     <div className="bg-white rounded-lg border border-stone-200 divide-y divide-stone-100">
                       {section.items.map((h, i) => (
                         <div key={i} className="p-4 flex items-start gap-3">
-                          <ArrowRight className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                          <ArrowRight className="w-4 h-4 text-plum-600 flex-shrink-0 mt-0.5" />
                           <div>
                             <div className="font-medium text-sm text-stone-900">{h.t}</div>
                             <div className="text-xs text-stone-500 mt-0.5">{h.d}</div>
@@ -589,17 +592,17 @@ export default function EarthDayHub() {
           {activeSection === 'event' && (
             <div className="space-y-8">
               <div>
-                <p className="text-xs uppercase tracking-wider text-emerald-600 font-medium mb-2">Part 05</p>
+                <p className="text-xs uppercase tracking-wider text-plum-600 font-medium mb-2">Part 05</p>
                 <h2 className="text-3xl font-semibold text-stone-900 mb-3">Running the event</h2>
                 <p className="text-stone-600 leading-relaxed">Suggested agenda, communications templates, and success metrics for your workshop.</p>
               </div>
 
-              <div className="bg-emerald-50 border border-emerald-200 p-5 rounded-xl">
+              <div className="bg-plum-50 border border-plum-200 p-5 rounded-xl">
                 <div className="flex items-start gap-3">
-                  <Lightbulb className="w-5 h-5 text-emerald-700 flex-shrink-0 mt-0.5" />
+                  <Lightbulb className="w-5 h-5 text-plum-700 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h3 className="font-semibold text-emerald-900 mb-1">Tie it to Digital Cleanup Day</h3>
-                    <p className="text-sm text-emerald-800 leading-relaxed">
+                    <h3 className="font-semibold text-plum-900 mb-1">Tie it to Digital Cleanup Day</h3>
+                    <p className="text-sm text-plum-800 leading-relaxed">
                       Join the global initiative by Let's Do It World. The 2023 campaign saw 380,000+ participants across 105 countries delete 12.7 million GB — preventing an estimated 1,742 tonnes of CO₂. Joining a recognized effort gives credibility, promotional assets, and peer benchmarks.
                     </p>
                   </div>
@@ -612,7 +615,7 @@ export default function EarthDayHub() {
                   {[
                     { time: '0:00 – 0:07', title: 'Framing', detail: 'Why the cloud has a carbon cost. Use the per-activity table. Anchor with the dark-data statistic (5.8M tonnes/year ≈ 1.2M cars).', color: 'bg-amber-500' },
                     { time: '0:07 – 0:15', title: 'Baseline', detail: 'Participants check their own storage: OneDrive, mailbox, Zoom/Panopto folders. Each writes down their starting number.', color: 'bg-sky-500' },
-                    { time: '0:15 – 0:45', title: 'Hands-on cleanup', detail: 'Walk through per-platform workflows in order. Participants clean as you teach. Keep the pace brisk — prioritize Outlook and OneDrive if time runs short.', color: 'bg-emerald-500' },
+                    { time: '0:15 – 0:45', title: 'Hands-on cleanup', detail: 'Walk through per-platform workflows in order. Participants clean as you teach. Keep the pace brisk — prioritize Outlook and OneDrive if time runs short.', color: 'bg-plum-500' },
                     { time: '0:45 – 0:53', title: 'Results & conversion', detail: 'Each participant records their new number. Convert total GB saved to CO₂e. Post the aggregate as a live scoreboard.', color: 'bg-violet-500' },
                     { time: '0:53 – 1:00', title: 'Habits & commitment', detail: 'Each participant picks 3 habits to adopt. Send a follow-up email in 30 days checking on adoption.', color: 'bg-rose-500' },
                   ].map((slot, i) => (
@@ -710,6 +713,22 @@ export default function EarthDayHub() {
           )}
         </main>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-plum-700 text-white mt-12">
+        <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6 pb-24 md:pb-10">
+          <div className="flex flex-col items-center md:items-start gap-3">
+            <img src={`${import.meta.env.BASE_URL}ust-signature-white.png`} alt="University of St. Thomas" className="h-10 w-auto" />
+            <p className="text-xs text-plum-200">
+              ITS Sustainability · Office of Sustainability Initiatives (OSI)
+            </p>
+          </div>
+          <div className="text-xs text-plum-200 text-center md:text-right leading-relaxed max-w-sm">
+            A resource for anyone who wants to host a Digital Cleanup event.
+            <br />Reduce your digital carbon footprint — one hour at a time.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
@@ -732,7 +751,7 @@ function PlatformCard({ title, counts, gotchas, workflow, timeEstimate }: Platfo
     <div className="bg-white p-6 rounded-xl border border-stone-200">
       <div className="flex items-center justify-between mb-5">
         <h3 className="text-xl font-semibold text-stone-900">{title}</h3>
-        <span className="text-xs px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full font-medium">{timeEstimate}</span>
+        <span className="text-xs px-3 py-1 bg-plum-100 text-plum-700 rounded-full font-medium">{timeEstimate}</span>
       </div>
       <div className="grid md:grid-cols-2 gap-6 mb-6">
         <div>
@@ -740,7 +759,7 @@ function PlatformCard({ title, counts, gotchas, workflow, timeEstimate }: Platfo
           <ul className="space-y-2">
             {counts.map((c, i) => (
               <li key={i} className="text-sm text-stone-700 leading-relaxed flex items-start gap-2">
-                <span className="text-emerald-600 flex-shrink-0 mt-1">•</span>
+                <span className="text-plum-600 flex-shrink-0 mt-1">•</span>
                 <span>{c}</span>
               </li>
             ))}
@@ -763,7 +782,7 @@ function PlatformCard({ title, counts, gotchas, workflow, timeEstimate }: Platfo
         <div className="space-y-2">
           {workflow.map((step, i) => (
             <div key={i} className="flex items-start gap-3 p-3 bg-stone-50 rounded-lg">
-              <div className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-medium flex-shrink-0">{i + 1}</div>
+              <div className="w-6 h-6 rounded-full bg-plum-600 text-white flex items-center justify-center text-xs font-medium flex-shrink-0">{i + 1}</div>
               <div>
                 <div className="font-medium text-sm text-stone-900">{step.title}</div>
                 <div className="text-xs text-stone-600 mt-0.5 leading-relaxed">{step.detail}</div>
@@ -789,15 +808,15 @@ function ToolLink({ name, desc, url, displayUrl }: ToolLinkProps) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block bg-white p-3 rounded-lg border border-stone-200 hover:border-emerald-400 hover:shadow-sm transition-all group"
+      className="block bg-white p-3 rounded-lg border border-stone-200 hover:border-plum-400 hover:shadow-sm transition-all group"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="font-medium text-sm text-stone-900 group-hover:text-emerald-700 transition-colors">{name}</div>
+          <div className="font-medium text-sm text-stone-900 group-hover:text-plum-700 transition-colors">{name}</div>
           <div className="text-xs text-stone-500 mt-0.5 leading-relaxed">{desc}</div>
-          {(displayUrl || url) && <div className="text-xs text-emerald-600 mt-1 font-mono">{displayUrl || url}</div>}
+          {(displayUrl || url) && <div className="text-xs text-plum-600 mt-1 font-mono">{displayUrl || url}</div>}
         </div>
-        <ExternalLink className="w-3.5 h-3.5 text-stone-400 flex-shrink-0 mt-1 group-hover:text-emerald-600 transition-colors" />
+        <ExternalLink className="w-3.5 h-3.5 text-stone-400 flex-shrink-0 mt-1 group-hover:text-plum-600 transition-colors" />
       </div>
     </a>
   );
@@ -822,9 +841,9 @@ function TemplateCard({ title, subject, body, onCopy, id, copied }: TemplateCard
         </div>
         <button
           onClick={() => onCopy(`Subject: ${subject}\n\n${body}`, id)}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-white border border-stone-200 rounded-md hover:border-emerald-300 transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-white border border-stone-200 rounded-md hover:border-plum-300 transition-colors"
         >
-          {copied === id ? <><Check className="w-3 h-3 text-emerald-600" /> Copied</> : <><Copy className="w-3 h-3" /> Copy</>}
+          {copied === id ? <><Check className="w-3 h-3 text-plum-600" /> Copied</> : <><Copy className="w-3 h-3" /> Copy</>}
         </button>
       </div>
       <div className="p-5">
