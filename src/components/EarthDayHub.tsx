@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { Cloud, HardDrive, Calculator, Repeat, Calendar, Mail, FolderOpen, Users, GraduationCap, Video, PlayCircle, Check, ExternalLink, AlertCircle, TrendingDown, Lightbulb, Copy, ArrowRight } from 'lucide-react';
+import StorageImpactCalculator from './StorageImpactCalculator';
+import BehaviorSavingsPanel from './BehaviorSavingsPanel';
 
 export default function EarthDayHub() {
   const [activeSection, setActiveSection] = useState('why');
   const [activePlatform, setActivePlatform] = useState('outlook');
-  const [gbInput, setGbInput] = useState(100);
-  const [emailInput, setEmailInput] = useState(5);
-  const [videoInput, setVideoInput] = useState(50);
   const [copied, setCopied] = useState<string | null>(null);
 
   const sections = [
@@ -31,12 +30,6 @@ export default function EarthDayHub() {
     setCopied(id);
     setTimeout(() => setCopied(null), 2000);
   };
-
-  // Calculations
-  const storageCO2 = (gbInput * 2).toFixed(1);
-  const emailCO2 = (emailInput * 1000 * 10 * 4 / 1000).toFixed(1);
-  const videoCO2 = (videoInput * 2).toFixed(1);
-  const totalCO2 = (parseFloat(storageCO2) + parseFloat(emailCO2) + parseFloat(videoCO2)).toFixed(1);
 
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900">
@@ -391,48 +384,8 @@ export default function EarthDayHub() {
                 <p className="text-stone-600 leading-relaxed">No single perfect calculator exists for higher-ed cloud footprints. Use a mix of tools plus back-of-envelope formulas.</p>
               </div>
 
-              <div className="bg-white p-6 rounded-xl border border-stone-200">
-                <div className="flex items-center gap-2 mb-1">
-                  <Calculator className="w-5 h-5 text-plum-600" />
-                  <h3 className="text-lg font-semibold">Quick workshop calculator</h3>
-                </div>
-                <p className="text-sm text-stone-500 mb-6">Rule-of-thumb estimates. Good for live demos — present as ranges, not precision.</p>
-
-                <div className="space-y-5">
-                  {[
-                    { label: 'Cloud storage', value: gbInput, min: 0, max: 1000, setter: setGbInput, note: `≈ ${storageCO2} kg CO₂e / year` },
-                    { label: 'Mailbox size', value: emailInput, min: 0, max: 50, setter: setEmailInput, note: `≈ ${(emailInput * 10).toFixed(0)}k emails · ${emailCO2} kg CO₂e` },
-                    { label: 'Video archive', value: videoInput, min: 0, max: 500, setter: setVideoInput, note: `≈ ${videoInput} hours HD · ${videoCO2} kg CO₂e / year` },
-                  ].map((s) => (
-                    <div key={s.label}>
-                      <div className="flex justify-between items-baseline mb-2">
-                        <label className="text-sm font-medium text-stone-700">{s.label}</label>
-                        <span className="text-sm font-mono text-stone-500">{s.value} GB</span>
-                      </div>
-                      <input
-                        type="range"
-                        min={s.min}
-                        max={s.max}
-                        value={s.value}
-                        onChange={(e) => s.setter(parseInt(e.target.value))}
-                        className="w-full accent-plum-600"
-                      />
-                      <div className="text-xs text-stone-500 mt-1">{s.note}</div>
-                    </div>
-                  ))}
-
-                  <div className="pt-5 border-t border-stone-100 flex items-center justify-between">
-                    <div>
-                      <div className="text-xs text-stone-500 uppercase tracking-wide">Total estimated footprint</div>
-                      <div className="text-3xl font-semibold text-plum-700 mt-1">{totalCO2} <span className="text-lg text-stone-500 font-normal">kg CO₂e / year</span></div>
-                    </div>
-                    <div className="text-right text-xs text-stone-500">
-                      ≈ {(parseFloat(totalCO2) / 4.6).toFixed(0)} miles<br/>
-                      driven in a car
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <StorageImpactCalculator />
+              <BehaviorSavingsPanel />
 
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
@@ -467,16 +420,17 @@ export default function EarthDayHub() {
                   <Lightbulb className="w-5 h-5 text-amber-400" />
                   <h3 className="text-lg font-semibold text-white">Back-of-envelope formulas</h3>
                 </div>
-                <p className="text-sm text-stone-400 mb-5">When a real calculator isn't available, participants can estimate in under a minute.</p>
+                <p className="text-sm text-stone-400 mb-5">Quick mental math — and a reminder of where the carbon actually is.</p>
                 <div className="space-y-4 font-mono text-sm">
                   {[
-                    { label: 'STORAGE', note: '~3–7 kWh per GB/year × grid factor (U.S. avg 0.4 kg CO₂e/kWh).', highlight: '100 GB ≈ 0.2 tonnes/year.' },
-                    { label: 'EMAIL  ', note: 'Mailbox GB × 10 = rough email count. Apply ~4g per email.', highlight: '5 GB ≈ 50,000 emails ≈ 200 kg CO₂e.' },
-                    { label: 'VIDEO  ', note: '1 hr HD ≈ 1 GB.', highlight: '3 years of weekly 1-hour meetings ≈ 150 GB.' },
-                    { label: 'PHOTOS ', note: 'Avg smartphone photo ≈ 3–4 MB. Typical user has', highlight: '25 GB of redundant cloud photos ≈ 50–100 kg CO₂e/year.' },
+                    { label: 'STORAGE', note: '≈ 3–8 kg CO₂e per TB·year (operational + amortized manufacturing, grid ~0.4 kg/kWh).', highlight: '1 TB ≈ 3–8 kg · 100 GB ≈ 0.3–0.8 kg.' },
+                    { label: 'AT SCALE', note: 'Per person it’s small; per institution it adds up.', highlight: '10,000 accounts × 100 GB ≈ 5 tonnes/year — ~half never accessed again.' },
+                    { label: 'EMAIL', note: 'Storing mail is negligible. The ~4 g often quoted is the cost of sending one (device + network) — already spent.', highlight: 'Lever: send less, unsubscribe, skip Reply-All.' },
+                    { label: 'VIDEO', note: 'Recordings barely cost anything to store (~1 GB/hr). The carbon is in streaming & recording; 1 hr audio ≈ 4% of HD video.', highlight: 'Lever: don’t record what won’t be rewatched.' },
+                    { label: 'PHOTOS', note: '25 GB of duplicates ≈ ~0.1 kg/year to store — tiny each, but it’s disk that had to be manufactured.', highlight: 'Lever: trim duplicates; the win is less storage hardware at scale.' },
                   ].map((f, i, arr) => (
                     <div key={f.label} className={`flex items-start gap-3 pb-4 ${i < arr.length - 1 ? 'border-b border-stone-800' : ''}`}>
-                      <span className="text-plum-400 flex-shrink-0">{f.label}</span>
+                      <span className="text-plum-400 flex-shrink-0 w-20">{f.label}</span>
                       <span className="text-stone-300">{f.note} <span className="text-white">{f.highlight}</span></span>
                     </div>
                   ))}
